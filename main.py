@@ -2,26 +2,24 @@ def register():
     db = open("database.txt", "r")
     Username = input("Create Username: ")
     Password = input("Create Password: ")
-    U = []
-    P = []
-    for x in db:
-        a,b = x.split(",")
-        b = b.strip()
-        U.append(a)
-        P.append(b)
-    data = dict(zip(U, P))
+    data = {}
+
+    for user in db:
+        username, password = user.split(",")
+        password = password.strip()
+        data[username] = password
 
     import re
-    UN = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
-    PW = re.compile(r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{5,16}$")
+    username_regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
+    password_regex = re.compile(r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{5,16}$")
 
-    if not re.fullmatch(UN, Username):
+    if not re.fullmatch(username_regex, Username):
         print("Invalid Email")
         register()
-    elif not re.fullmatch(PW, Password):
+    elif not re.fullmatch(password_regex, Password):
         print("Password too weak")
         register()
-    elif Username in U:
+    elif Username in data:
         print("Username already exist")
         register()
     else:
@@ -36,10 +34,10 @@ def access():
 
     if not len(Username or Password) < 1:
         data = {}
-        for x in db:
-                a, b = x.split(",")
-                b = b.strip()
-                data[a] = b
+        for user in db:
+                username, password = user.split(",")
+                password = password.strip()
+                data[username] = password
         try:
             if data[Username]:
                 if Password == data[Username]:
