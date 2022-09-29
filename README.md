@@ -1,7 +1,7 @@
-Registration and Login system using Python, file handling
+#Registration and Login system using Python, file handling#
 
-Stage -- 1 
-Registration
+##Stage -- 1##
+**Registration**
 
 When the user chooses to Register
 
@@ -22,12 +22,12 @@ eg:- 123#@gmail.com
               one uppercase, 
               one lowercase character 
 
-Stage 2 
-  Once the username and password are validated, store that data in a file
+##Stage 2##
+  **Once the username and password are validated, store that data in a file**
 
 
-Stage 3
-Login
+##Stage 3##
+**Login**
 
  When the user chooses to Login, check whether his/her credentials exist in the file or not based on the user input. 
 If it doesn’t exist then ask them to go for Registration or 
@@ -36,4 +36,4 @@ or else you can ask them to provide a new password
 (only if their username matches with the data exists in the file)
 If nothing matches in your file you should ask them to Registration
 (Since they don't have an account)
-Note:- This task is accomplished using Python alone. No web.
+**Note:- This task is accomplished using Python alone. No web.**
